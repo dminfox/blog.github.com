@@ -16,15 +16,15 @@
   <meta name="author" content="Harry">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装完BookStack后，尝试着导出电子文档，发现除了PDF文档导出不了，EPUB文档和MOBI文档导出都很正常。 查看日志信息报错如下： 1ERROR:zygote_host_impl_linux.cc(100)] Running as root without --no-sandbox is not supported. See https:&#x2F;&#x2F;crbug.com&#x2F;638180  chrom">
+    <meta name="description" content="安装完BookStack后，尝试着导出电子文档，发现除了PDF文档导出不了，EPUB文档和MOBI文档导出都很正常。 查看日志信息报错如下： 1ERROR:zygote_host_impl_linux.cc(100)] Running as root without --no-sandbox is not supported. See https:&#x2F;&#x2F;crbug.com&#x2F;638180  原来是ch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BookStack不能导出pdf-Running as root without --no-sandbox is not supported">
 <meta property="og:url" content="http://blog.damaiinfo.com/posts/20240726ad0f1ede.html">
 <meta property="og:site_name" content="达麦信息技术网">
-<meta property="og:description" content="安装完BookStack后，尝试着导出电子文档，发现除了PDF文档导出不了，EPUB文档和MOBI文档导出都很正常。 查看日志信息报错如下： 1ERROR:zygote_host_impl_linux.cc(100)] Running as root without --no-sandbox is not supported. See https:&#x2F;&#x2F;crbug.com&#x2F;638180  chrom">
+<meta property="og:description" content="安装完BookStack后，尝试着导出电子文档，发现除了PDF文档导出不了，EPUB文档和MOBI文档导出都很正常。 查看日志信息报错如下： 1ERROR:zygote_host_impl_linux.cc(100)] Running as root without --no-sandbox is not supported. See https:&#x2F;&#x2F;crbug.com&#x2F;638180  原来是ch">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-26T01:38:36.000Z">
-<meta property="article:modified_time" content="2024-07-26T13:52:52.262Z">
+<meta property="article:modified_time" content="2024-07-26T14:11:25.129Z">
 <meta property="article:author" content="Harry">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -259,7 +259,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          137 字
+          144 字
         
       </span>
     
@@ -316,8 +316,8 @@
 <p>查看日志信息报错如下：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">ERROR:zygote_host_impl_linux.<span class="hljs-keyword">cc</span>(<span class="hljs-number">100</span>)] Running <span class="hljs-keyword">as</span> root without --<span class="hljs-keyword">no</span>-<span class="hljs-keyword">sandbox</span> <span class="hljs-keyword">is</span> not supported. See https://crbug.<span class="hljs-keyword">com</span>/<span class="hljs-number">638180</span><br></code></pre></td></tr></table></figure>
 
-<p>chromium 不支持以 root 用户身份运行除非使用 --no-sandbox 参数</p>
-<p>因此需要编辑配置文件&#x2F;etc&#x2F;supervisor&#x2F;conf.d&#x2F;bookstack.conf，添加QTWEBENGINE_DISABLE_SANDBOX&#x3D;1，</p>
+<p>原来是chromium 不支持以 root 用户身份运行，除非使用 --no-sandbox 参数</p>
+<p>因此需要编辑配置文件&#x2F;etc&#x2F;supervisor&#x2F;conf.d&#x2F;bookstack.conf，添加QTWEBENGINE_DISABLE_SANDBOX&#x3D;1这个参数，</p>
 <p>完整配置如下：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[program:BookStack]</span><br><span class="hljs-attr">directory</span> = /opt/BookStack<br><span class="hljs-attr">command</span> =/opt/BookStack/BookStack<br><span class="hljs-attr">autostart</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">autorestart</span>=<span class="hljs-literal">true</span><br><span class="hljs-attr">user</span> = root<br><span class="hljs-attr">redirect_stderr</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">stdout_logfile</span> = /var/log/supervisor/BookStack.log<br><span class="hljs-attr">environment</span>=QTWEBENGINE_DISABLE_SANDBOX=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 
