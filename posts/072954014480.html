@@ -16,22 +16,24 @@
   <meta name="author" content="Harry">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装完BookStack后，尝试着导出电子文档，发现除了PDF文档导出不了，EPUB文档和MOBI文档导出都很正常。 查看日志信息报错如下： 1ERROR:zygote_host_impl_linux.cc(100)] Running as root without --no-sandbox is not supported. See https:&#x2F;&#x2F;crbug.com&#x2F;638180  原来是ch">
+    <meta name="description" content="一、故障现象 周一上班，有用户反馈系统登录不上，据说这套系统运行2年一直没问题，突然就访问不了。因为这个系统之前一直都不是我在维护，因此不是很熟悉这个系统，但是还是答应帮忙看了一下。  服务器运行的是tomcat7，查看日志，比较明显的错误信息有下面两条： 1Could not get JDBC Connection; nested exception is java.sql.SQLExcepti">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BookStack不能导出pdf-Running as root without --no-sandbox is not supported">
-<meta property="og:url" content="http://blog.damaiinfo.com/posts/20240726ad0f1ede.html">
+<meta property="og:title" content="Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database">
+<meta property="og:url" content="http://blog.damaiinfo.com/posts/072954014480.html">
 <meta property="og:site_name" content="达麦信息网">
-<meta property="og:description" content="安装完BookStack后，尝试着导出电子文档，发现除了PDF文档导出不了，EPUB文档和MOBI文档导出都很正常。 查看日志信息报错如下： 1ERROR:zygote_host_impl_linux.cc(100)] Running as root without --no-sandbox is not supported. See https:&#x2F;&#x2F;crbug.com&#x2F;638180  原来是ch">
+<meta property="og:description" content="一、故障现象 周一上班，有用户反馈系统登录不上，据说这套系统运行2年一直没问题，突然就访问不了。因为这个系统之前一直都不是我在维护，因此不是很熟悉这个系统，但是还是答应帮忙看了一下。  服务器运行的是tomcat7，查看日志，比较明显的错误信息有下面两条： 1Could not get JDBC Connection; nested exception is java.sql.SQLExcepti">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-26T01:38:36.000Z">
-<meta property="article:modified_time" content="2024-07-28T09:08:26.847Z">
+<meta property="og:image" content="http://blog.damaiinfo.com/img/54014480.png">
+<meta property="article:published_time" content="2024-07-29T08:07:37.000Z">
+<meta property="article:modified_time" content="2024-07-30T06:46:56.702Z">
 <meta property="article:author" content="Harry">
-<meta property="article:tag" content="计算机知识">
+<meta property="article:tag" content="Oracle">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://blog.damaiinfo.com/img/54014480.png">
   
   
   
-  <title>BookStack不能导出pdf-Running as root without --no-sandbox is not supported - 达麦信息网</title>
+  <title>Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database - 达麦信息网</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -69,7 +71,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"blog.damaiinfo.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"0a05692ae18fde114911ca78bc627c76","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"blog.damaiinfo.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"0a05692ae18fde114911ca78bc627c76","google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -237,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="BookStack不能导出pdf-Running as root without --no-sandbox is not supported"></span>
+            <span id="subtitle" data-typed-text="Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database"></span>
           
         </div>
 
@@ -253,8 +255,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-26 09:38" pubdate>
-          2024年7月26日上午9点38分
+        <time datetime="2024-07-29 16:07" pubdate>
+          2024年7月29日下午4点07分
         </time>
       </span>
     
@@ -265,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          144 字
+          539 字
         
       </span>
     
@@ -276,7 +278,7 @@
         
         
         
-          2 分钟
+          5 分钟
         
       </span>
     
@@ -306,6 +308,19 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
 
@@ -313,24 +328,47 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">BookStack不能导出pdf-Running as root without --no-sandbox is not supported</h1>
+            <h1 id="seo-header">Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database</h1>
             
             
               <div class="markdown-body">
                 
-                <p>安装完BookStack后，尝试着导出电子文档，发现除了PDF文档导出不了，EPUB文档和MOBI文档导出都很正常。</p>
-<p>查看日志信息报错如下：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">ERROR:zygote_host_impl_linux.<span class="hljs-keyword">cc</span>(<span class="hljs-number">100</span>)] Running <span class="hljs-keyword">as</span> root without --<span class="hljs-keyword">no</span>-<span class="hljs-keyword">sandbox</span> <span class="hljs-keyword">is</span> not supported. See https://crbug.<span class="hljs-keyword">com</span>/<span class="hljs-number">638180</span><br></code></pre></td></tr></table></figure>
+                <h2 id="一、故障现象"><a href="#一、故障现象" class="headerlink" title="一、故障现象"></a>一、故障现象</h2><blockquote>
+<p>周一上班，有用户反馈系统登录不上，据说这套系统运行2年一直没问题，突然就访问不了。因为这个系统之前一直都不是我在维护，因此不是很熟悉这个系统，但是还是答应帮忙看了一下。</p>
+</blockquote>
+<p>服务器运行的是tomcat7，查看日志，比较明显的错误信息有下面两条：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs log">Could not get JDBC Connection; nested exception is java.sql.SQLException: Connections could not be acquired from the underlying database!<br></code></pre></td></tr></table></figure>
 
-<p>原来是chromium 不支持以 root 用户身份运行，除非使用 --no-sandbox 参数</p>
-<p>因此需要编辑配置文件&#x2F;etc&#x2F;supervisor&#x2F;conf.d&#x2F;bookstack.conf，添加QTWEBENGINE_DISABLE_SANDBOX&#x3D;1这个参数，</p>
-<p>完整配置如下：</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[program:BookStack]</span><br><span class="hljs-attr">directory</span> = /opt/BookStack<br><span class="hljs-attr">command</span> =/opt/BookStack/BookStack<br><span class="hljs-attr">autostart</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">autorestart</span>=<span class="hljs-literal">true</span><br><span class="hljs-attr">user</span> = root<br><span class="hljs-attr">redirect_stderr</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">stdout_logfile</span> = /var/log/supervisor/BookStack.log<br><span class="hljs-attr">environment</span>=QTWEBENGINE_DISABLE_SANDBOX=<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
-
-<p>配置完成后，重启服务</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">supervisorctl reload</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs log">java.sql.SQLException: The Network Adapter could not establish the connection<br></code></pre></td></tr></table></figure>
 
 
+
+<h2 id="二、分析排查"><a href="#二、分析排查" class="headerlink" title="二、分析排查"></a>二、分析排查</h2><p>通过前面的tomcat错误日志，可以初步判断是数据库连接出现了问题，接下来去查看数据库的情况。</p>
+<p>经过了解，tomcat连接的是本机的oracle数据库，版本为oracle 11g，查看监听状态：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl status<br></code></pre></td></tr></table></figure>
+
+<p>命令执行完，未发现异常，接下来检查Oracle数据库的网络连接配置和诊断网络连接问题</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">tnsping orcl<br></code></pre></td></tr></table></figure>
+
+<p>以上命令执行了多次发现只有一两次结果正常，而且延迟很大，超过1000ms，由此基本可以确定为数据库网络连接出现了问题。</p>
+<p>然后继续去看listener的日志文件，发现日志文件大小居然超过2GB，费了很大劲打开了日志文件，频繁出现下面的错误信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs log">Fatal NI connect error 12537, connecting to:<br> (LOCAL=NO)<br>  VERSION INFORMATION:<br>    TNS for 64-bit Windows: Version 11.2.0.1.0 - Production<br>    Oracle Bequeath NT Protocol Adapter for 64-bit Windows: Version 11.2.0.1.0 - Production<br>    Windows NT TCP/IP NT Protocol Adapter for 64-bit Windows: Version 11.2.0.1.0 - Production<br>  Time: 29-7月 -2024 08:25:19<br>  Tracing not turned on.<br>  Tns error struct:<br>    ns main err code: 12537<br>TNS-12537: TNS: 连接关闭<br>    ns secondary err code: 12560<br>    nt main err code: 0<br>    nt secondary err code: 0<br>    nt OS err code: 0<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、问题解决"><a href="#三、问题解决" class="headerlink" title="三、问题解决"></a>三、问题解决</h2><p>参考<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="Doc ID 739530.1  How to delete or refresh/recycle a SQL*Net Listener log file while the Listener is active">[1]</span></a></sup>的说法，<code>listener.log</code>日志大小不能超过2GB（有些平台是4GB），否则会导致<code>LISTENER</code>监听器无法处理新的连接，问题原因终于找到了，那么接下来就是解决问题了。</p>
+<h3 id="3-1-首先关闭日志"><a href="#3-1-首先关闭日志" class="headerlink" title="3.1 首先关闭日志"></a>3.1 首先关闭日志</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl <span class="hljs-built_in">set</span> log_status off<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-2-清空日志"><a href="#3-2-清空日志" class="headerlink" title="3.2 清空日志"></a>3.2 清空日志</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">cls</span> &gt; listener.log<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-打开日志"><a href="#3-3-打开日志" class="headerlink" title="3.3 打开日志"></a>3.3 打开日志</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl <span class="hljs-built_in">set</span> log_status on<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-4-重新加载监听"><a href="#3-4-重新加载监听" class="headerlink" title="3.4 重新加载监听"></a>3.4 重新加载监听</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl reload<br></code></pre></td></tr></table></figure>
+
+<p>执行完上面一系列操作，数据库连接终于恢复了正常，此时执行<code>tnsping</code>命令，返回几乎就是0毫秒，业务系统访问也没有问题了。</p>
+<p>以上是针对Windows下的操作，对于Linux系统差不多类似。</p>
+<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>Doc ID 739530.1  How to delete or refresh&#x2F;recycle a SQL*Net Listener log file while the Listener is active
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -348,7 +386,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">数据库</a>
   
   
 
@@ -363,7 +401,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9F%A5%E8%AF%86/" class="print-no-link">#计算机知识</a>
+        <a href="/tags/Oracle/" class="print-no-link">#Oracle</a>
       
     </div>
   
@@ -377,18 +415,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/2024072779145e3f.html" title="oom-killer引起的一次k8s worker节点宕机事件">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">oom-killer引起的一次k8s worker节点宕机事件</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/2024072216107.html" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/posts/072779145e3f.html" title="oom-killer引起的一次k8s worker节点宕机事件">
+                        <span class="hidden-mobile">oom-killer引起的一次k8s worker节点宕机事件</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -406,19 +438,6 @@
 
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
 
     </div>
   </div>
