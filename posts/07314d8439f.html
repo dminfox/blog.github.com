@@ -16,24 +16,22 @@
   <meta name="author" content="Harry">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、故障现象 周一上班，有用户反馈系统登录不上，据说这套系统运行2年一直没问题，突然就访问不了。因为这个系统之前一直都不是我在维护，因此不是很熟悉这个系统，但是还是答应帮忙看了一下。  服务器运行的是tomcat7，查看日志，比较明显的错误信息有下面两条： 1Could not get JDBC Connection; nested exception is java.sql.SQLExcepti">
+    <meta name="description" content="一个做审计的朋友从客户那里拿到了一个dmp文件，想让我帮他导入到数据库中便于查询数据，因为他电脑的oracle数据库也是找我帮他安装的，想着不过是举手之劳，所以我就欣然地答应了。  一、错误描述说干就干，打开cmd窗口，执行imp命令开始导入，结果不断报错，信息如下： 123IMP-00019: 由于 ORACLE 错误 12899 而拒绝行IMP-00003: 遇到 ORACLE 错误 128">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database">
-<meta property="og:url" content="http://blog.damaiinfo.com/posts/072954014480.html">
+<meta property="og:title" content="oracle使用imp导入报错ORA-12899">
+<meta property="og:url" content="http://blog.damaiinfo.com/posts/07314d8439f.html">
 <meta property="og:site_name" content="达麦信息网">
-<meta property="og:description" content="一、故障现象 周一上班，有用户反馈系统登录不上，据说这套系统运行2年一直没问题，突然就访问不了。因为这个系统之前一直都不是我在维护，因此不是很熟悉这个系统，但是还是答应帮忙看了一下。  服务器运行的是tomcat7，查看日志，比较明显的错误信息有下面两条： 1Could not get JDBC Connection; nested exception is java.sql.SQLExcepti">
+<meta property="og:description" content="一个做审计的朋友从客户那里拿到了一个dmp文件，想让我帮他导入到数据库中便于查询数据，因为他电脑的oracle数据库也是找我帮他安装的，想着不过是举手之劳，所以我就欣然地答应了。  一、错误描述说干就干，打开cmd窗口，执行imp命令开始导入，结果不断报错，信息如下： 123IMP-00019: 由于 ORACLE 错误 12899 而拒绝行IMP-00003: 遇到 ORACLE 错误 128">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://blog.damaiinfo.com/img/54014480.png">
-<meta property="article:published_time" content="2024-07-29T08:07:37.000Z">
-<meta property="article:modified_time" content="2024-07-30T06:46:56.702Z">
+<meta property="article:published_time" content="2024-07-31T06:58:33.000Z">
+<meta property="article:modified_time" content="2024-07-31T08:47:43.661Z">
 <meta property="article:author" content="Harry">
 <meta property="article:tag" content="Oracle">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://blog.damaiinfo.com/img/54014480.png">
   
   
   
-  <title>Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database - 达麦信息网</title>
+  <title>oracle使用imp导入报错ORA-12899 - 达麦信息网</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -241,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database"></span>
+            <span id="subtitle" data-typed-text="oracle使用imp导入报错ORA-12899"></span>
           
         </div>
 
@@ -257,8 +255,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-07-29 16:07" pubdate>
-          2024年7月29日下午4点07分
+        <time datetime="2024-07-31 14:58" pubdate>
+          2024年7月31日下午2点58分
         </time>
       </span>
     
@@ -269,7 +267,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          539 字
+          511 字
         
       </span>
     
@@ -338,47 +336,35 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database</h1>
+            <h1 id="seo-header">oracle使用imp导入报错ORA-12899</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="一、故障现象"><a href="#一、故障现象" class="headerlink" title="一、故障现象"></a>一、故障现象</h2><blockquote>
-<p>周一上班，有用户反馈系统登录不上，据说这套系统运行2年一直没问题，突然就访问不了。因为这个系统之前一直都不是我在维护，因此不是很熟悉这个系统，但是还是答应帮忙看了一下。</p>
+                <blockquote>
+<p>一个做审计的朋友从客户那里拿到了一个dmp文件，想让我帮他导入到数据库中便于查询数据，因为他电脑的oracle数据库也是找我帮他安装的，想着不过是举手之劳，所以我就欣然地答应了。</p>
 </blockquote>
-<p>服务器运行的是tomcat7，查看日志，比较明显的错误信息有下面两条：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs log">Could not get JDBC Connection; nested exception is java.sql.SQLException: Connections could not be acquired from the underlying database!<br></code></pre></td></tr></table></figure>
+<h4 id="一、错误描述"><a href="#一、错误描述" class="headerlink" title="一、错误描述"></a>一、错误描述</h4><p>说干就干，打开<code>cmd</code>窗口，执行<code>imp</code>命令开始导入，结果不断报错，信息如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs oracle">IMP-00019: 由于 ORACLE 错误 12899 而拒绝行<br>IMP-00003: 遇到 ORACLE 错误 12899<br>ORA-12899: 列 &quot;SALE&quot;.&quot;XXXX_2021_2023&quot;.&quot;是否高值&quot; 的值太大 (实际值: 3, 最大值: 2)<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs log">java.sql.SQLException: The Network Adapter could not establish the connection<br></code></pre></td></tr></table></figure>
+<h4 id="二、原因分析"><a href="#二、原因分析" class="headerlink" title="二、原因分析"></a>二、原因分析</h4><p>查看ORA-12899这个报错的原因：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs oracle">12899, 00000, &quot;value too large for column %s (actual: %s, maximum: %s)&quot;<br>// *Cause: An attempt was made to insert or update a column with a value<br>//         which is too wide for the width of the destination column.<br>//         The name of the column is given, along with the actual width<br>//         of the value, and the maximum allowed width of the column.<br>//         Note that widths are reported in characters if character length<br>//         semantics are in effect for the column, otherwise widths are<br>//         reported in bytes.<br>// *Action: Examine the SQL statement for correctness.  Check source<br>//          and destination column data types.<br>//          Either make the destination column wider, or use a subset<br>//          of the source column (i.e. use substring).<br></code></pre></td></tr></table></figure>
 
+<p>虽然不清楚源数据的环境，但是结合数据正式导入前的提示，初步判断为数据库字符集差异导致</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs oracle">已经完成 ZHS16GBK 字符集和 AL16UTF16 NCHAR 字符集中的导入<br>导入服务器使用 AL32UTF8 字符集 (可能的字符集转换)<br></code></pre></td></tr></table></figure>
 
+<p>一个中文在字符集为<code>AL32UTF8</code>的数据库环境下占用3个字节，而字符集为<code>ZHS16GBK</code>时只占用2个字节，也就是说需要修改目标数据库的字符集与源数据库保持一致。</p>
+<h4 id="三、问题解决"><a href="#三、问题解决" class="headerlink" title="三、问题解决"></a>三、问题解决</h4><p>经过以上的分析，知道问题出在数据库字符集上，那么接下来就开始修改数据库字符集：</p>
+<h5 id="3-1-查询数据库字符集"><a href="#3-1-查询数据库字符集" class="headerlink" title="3.1 查询数据库字符集"></a>3.1 查询数据库字符集</h5><p>可通过下列几个SQL语句来查询当前数据库的字符集</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> V$NLS_PARAMETERS;<br><span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> sys.props$;<br><span class="hljs-keyword">SQL</span><span class="hljs-operator">&gt;</span> <span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> NLS_DATABASE_PARAMETERS;<br></code></pre></td></tr></table></figure>
 
-<h2 id="二、分析排查"><a href="#二、分析排查" class="headerlink" title="二、分析排查"></a>二、分析排查</h2><p>通过前面的tomcat错误日志，可以初步判断是数据库连接出现了问题，接下来去查看数据库的情况。</p>
-<p>经过了解，tomcat连接的是本机的oracle数据库，版本为oracle 11g，查看监听状态：</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl status<br></code></pre></td></tr></table></figure>
+<h5 id="3-1-修改数据库字符集"><a href="#3-1-修改数据库字符集" class="headerlink" title="3.1 修改数据库字符集"></a>3.1 修改数据库字符集</h5><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SQL</span>&gt; shutdown <span class="hljs-keyword">immediate</span><br><span class="hljs-keyword">SQL</span>&gt; startup mount;<br><span class="hljs-keyword">SQL</span>&gt; <span class="hljs-keyword">alter</span> <span class="hljs-keyword">system</span> <span class="hljs-keyword">enable</span> restricted <span class="hljs-keyword">session</span>;<br><span class="hljs-keyword">SQL</span>&gt; <span class="hljs-keyword">alter</span> <span class="hljs-keyword">system</span> <span class="hljs-keyword">set</span> job_queue_processes=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">SQL</span>&gt; <span class="hljs-keyword">alter</span> <span class="hljs-keyword">system</span> <span class="hljs-keyword">set</span> aq_tm_processes=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">SQL</span>&gt; <span class="hljs-keyword">alter</span> <span class="hljs-keyword">database</span> <span class="hljs-keyword">open</span>;<br><span class="hljs-keyword">SQL</span>&gt; <span class="hljs-keyword">alter</span> <span class="hljs-keyword">database</span> <span class="hljs-type">character</span> <span class="hljs-keyword">set</span> ZHS16GBK; <br>ERROR at <span class="hljs-type">line</span> <span class="hljs-number">1</span>:<br>ORA<span class="hljs-number">-12712</span>: <span class="hljs-built_in">new</span> <span class="hljs-type">character</span> <span class="hljs-keyword">set</span> must be a superset <span class="hljs-keyword">of</span> <span class="hljs-built_in">old</span> <span class="hljs-type">character</span> <span class="hljs-keyword">set</span><br></code></pre></td></tr></table></figure>
 
-<p>命令执行完，未发现异常，接下来检查Oracle数据库的网络连接配置和诊断网络连接问题</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">tnsping orcl<br></code></pre></td></tr></table></figure>
+<p>提示字符集不兼容，此时使用<code>INTERNAL_USE</code>参数来跳过字符集关系检测。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">SQL</span>&gt; <span class="hljs-keyword">alter</span> <span class="hljs-keyword">database</span> <span class="hljs-type">character</span> <span class="hljs-keyword">set</span> INTERNAL_USE ZHS16GBK;<br><span class="hljs-keyword">SQL</span>&gt; shutdown <span class="hljs-keyword">immediate</span><br><span class="hljs-keyword">SQL</span>&gt; startup <br></code></pre></td></tr></table></figure>
 
-<p>以上命令执行了多次发现只有一两次结果正常，而且延迟很大，超过1000ms，由此基本可以确定为数据库网络连接出现了问题。</p>
-<p>然后继续去看listener的日志文件，发现日志文件大小居然超过2GB，费了很大劲打开了日志文件，频繁出现下面的错误信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs log">Fatal NI connect error 12537, connecting to:<br> (LOCAL=NO)<br>  VERSION INFORMATION:<br>    TNS for 64-bit Windows: Version 11.2.0.1.0 - Production<br>    Oracle Bequeath NT Protocol Adapter for 64-bit Windows: Version 11.2.0.1.0 - Production<br>    Windows NT TCP/IP NT Protocol Adapter for 64-bit Windows: Version 11.2.0.1.0 - Production<br>  Time: 29-7月 -2024 08:25:19<br>  Tracing not turned on.<br>  Tns error struct:<br>    ns main err code: 12537<br>TNS-12537: TNS: 连接关闭<br>    ns secondary err code: 12560<br>    nt main err code: 0<br>    nt secondary err code: 0<br>    nt OS err code: 0<br></code></pre></td></tr></table></figure>
+<p>至此，ORA-12899问题已经解决，数据也可以正常导入数据库了</p>
 
-
-
-<h2 id="三、问题解决"><a href="#三、问题解决" class="headerlink" title="三、问题解决"></a>三、问题解决</h2><p>参考<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="Doc ID 739530.1  How to delete or refresh/recycle a SQL*Net Listener log file while the Listener is active">[1]</span></a></sup>的说法，<code>listener.log</code>日志大小不能超过2GB（有些平台是4GB），否则会导致<code>LISTENER</code>监听器无法处理新的连接，问题原因终于找到了，那么接下来就是解决问题了。</p>
-<h3 id="3-1-首先关闭日志"><a href="#3-1-首先关闭日志" class="headerlink" title="3.1 首先关闭日志"></a>3.1 首先关闭日志</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl <span class="hljs-built_in">set</span> log_status off<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-2-清空日志"><a href="#3-2-清空日志" class="headerlink" title="3.2 清空日志"></a>3.2 清空日志</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">cls</span> &gt; listener.log<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-3-打开日志"><a href="#3-3-打开日志" class="headerlink" title="3.3 打开日志"></a>3.3 打开日志</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl <span class="hljs-built_in">set</span> log_status on<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-4-重新加载监听"><a href="#3-4-重新加载监听" class="headerlink" title="3.4 重新加载监听"></a>3.4 重新加载监听</h3><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">lsnrctl reload<br></code></pre></td></tr></table></figure>
-
-<p>执行完上面一系列操作，数据库连接终于恢复了正常，此时执行<code>tnsping</code>命令，返回几乎就是0毫秒，业务系统访问也没有问题了。</p>
-<p>以上是针对Windows下的操作，对于Linux系统差不多类似。</p>
-<h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>Doc ID 739530.1  How to delete or refresh&#x2F;recycle a SQL*Net Listener log file while the Listener is active
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
                 
               </div>
             
@@ -425,18 +411,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/posts/07314d8439f.html" title="oracle使用imp导入报错ORA-12899">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">oracle使用imp导入报错ORA-12899</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/posts/072779145e3f.html" title="oom-killer引起的一次k8s worker节点宕机事件">
-                        <span class="hidden-mobile">oom-killer引起的一次k8s worker节点宕机事件</span>
+                      <a href="/posts/072954014480.html" title="Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database">
+                        <span class="hidden-mobile">Tomcat连接Oracle数据库报错Connections could not be acquired from the underlying database</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
